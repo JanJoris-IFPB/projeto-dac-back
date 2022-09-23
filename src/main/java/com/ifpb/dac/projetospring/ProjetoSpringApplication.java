@@ -10,13 +10,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ifpb.dac.projetospring.controller.PersonController;
+import com.ifpb.dac.projetospring.controller.VehicleController;
 import com.ifpb.dac.projetospring.model.Person;
+import com.ifpb.dac.projetospring.model.Vehicle;
 
 @SpringBootApplication
 public class ProjetoSpringApplication implements CommandLineRunner {
 
 	@Autowired
 	private PersonController personController;
+	@Autowired
+	private VehicleController vehicleController;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoSpringApplication.class, args);
@@ -28,7 +32,13 @@ public class ProjetoSpringApplication implements CommandLineRunner {
 	}
 
 	private void showMenu(BufferedReader reader) throws IOException {
-		System.out.print("1 - Adicionar pessoa \n2 - Mostrar pessoas cadastradas \n3 - Sair \nEscolha uma opção: ");
+		System.out.print("1 - Adicionar pessoa " +
+		"\n2 - Mostrar pessoas cadastradas " +
+		"\n3 - Adicionar veículo " +
+		"\n4 - Mostrar veículos cadastrados " +
+		"\n5 - Associar veículo com pessoa " +
+		"\n6 - Sair " +
+		"\nEscolha uma opção: ");
 
 		switch (reader.readLine()) {
 			default:
@@ -38,7 +48,16 @@ public class ProjetoSpringApplication implements CommandLineRunner {
 			case "2":
 				showAllPerson();
 				break;
+			case "3":
+				addVehicle(reader);
+				break;
+			case "4":
+				showAllVehicle();
+				break;
 			case "5":
+				vehicleToOwner(reader);
+				break;
+			case "6":
 				System.exit(0);
 		}
 
@@ -75,4 +94,46 @@ public class ProjetoSpringApplication implements CommandLineRunner {
 			e.printStackTrace();
 		}
 	}
+
+	private void addVehicle(BufferedReader reader) {
+		try {
+			System.out.print("Placa: ");
+			String plate = reader.readLine();
+			System.out.print("Marca: ");
+			String make = reader.readLine();
+			System.out.print("Modelo: ");
+			String model = reader.readLine();
+			System.out.print("Cor: ");
+			String color = reader.readLine();
+
+			vehicleController.saveVehicle(plate, make, model, color);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void showAllVehicle() {
+		System.out.print("Veículos cadastrados: ");
+		try {
+			for (Vehicle vehicle : vehicleController.getAll())
+				System.out.println(vehicle);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void vehicleToOwner(BufferedReader reader) {
+		try {
+			System.out.print("CPF do dono: ");
+			String cpf = reader.readLine();
+			System.out.print("Placa do veículo: ");
+			String plate = reader.readLine();
+
+			personController.associateVehicle(cpf, plate);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }

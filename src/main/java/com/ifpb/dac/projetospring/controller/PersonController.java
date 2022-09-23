@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.ifpb.dac.projetospring.model.Person;
+import com.ifpb.dac.projetospring.model.Vehicle;
 import com.ifpb.dac.projetospring.service.PersonService;
 import com.ifpb.dac.projetospring.service.validation.PersonValidateService;
 
@@ -16,6 +17,8 @@ public class PersonController {
     private PersonService personService;
     @Autowired
     private PersonValidateService personValidateService;
+    @Autowired
+    private VehicleController vehicleController;
 
     public Person savePerson(String cpf, String name, int age, String email, String phone) throws Exception {
         Person person = personService.findById(cpf).orElse(new Person());
@@ -47,6 +50,15 @@ public class PersonController {
 
     public void delete(String cpf) throws NoSuchElementException {
         personService.delete(getPerson(cpf));
+    }
+
+    public Person associateVehicle(String cpf, String plate) throws NoSuchElementException {
+        Person person = getPerson(cpf);
+        Vehicle vehicle = vehicleController.getVehicle(plate);
+
+        person.getVehicleList().add(vehicle);
+
+        return personService.save(person);
     }
 
 }
