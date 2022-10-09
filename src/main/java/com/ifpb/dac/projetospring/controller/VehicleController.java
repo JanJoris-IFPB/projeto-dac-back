@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.ifpb.dac.projetospring.model.Vehicle;
-import com.ifpb.dac.projetospring.service.VehicleService;
+import com.ifpb.dac.projetospring.model.entity.Vehicle;
+import com.ifpb.dac.projetospring.model.service.VehicleService;
 
 @Controller
 public class VehicleController {

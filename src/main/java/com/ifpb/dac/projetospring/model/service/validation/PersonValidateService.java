@@ -1,9 +1,9 @@
-package com.ifpb.dac.projetospring.service.validation;
+package com.ifpb.dac.projetospring.model.service.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ifpb.dac.projetospring.repository.PersonRepository;
+import com.ifpb.dac.projetospring.model.repository.PersonRepository;
 
 @Service
 public class PersonValidateService {

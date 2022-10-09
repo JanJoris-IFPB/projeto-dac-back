@@ -1,12 +1,12 @@
-package com.ifpb.dac.projetospring.service;
+package com.ifpb.dac.projetospring.model.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ifpb.dac.projetospring.model.Person;
-import com.ifpb.dac.projetospring.repository.PersonRepository;
+import com.ifpb.dac.projetospring.model.entity.Person;
+import com.ifpb.dac.projetospring.model.repository.PersonRepository;
 
 @Service
 public class PersonService {

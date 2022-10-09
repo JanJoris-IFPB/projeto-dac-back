@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ifpb.dac.projetospring.controller.PersonController;
 import com.ifpb.dac.projetospring.controller.VehicleController;
-import com.ifpb.dac.projetospring.model.Person;
-import com.ifpb.dac.projetospring.model.Vehicle;
+import com.ifpb.dac.projetospring.model.entity.Person;
+import com.ifpb.dac.projetospring.model.entity.Vehicle;
 
 @SpringBootApplication
 public class ProjetoSpringApplication implements CommandLineRunner {
@@ -41,7 +41,6 @@ public class ProjetoSpringApplication implements CommandLineRunner {
 		"\nEscolha uma opção: ");
 
 		switch (reader.readLine()) {
-			default:
 			case "1":
 				addPerson(reader);
 				break;
@@ -59,6 +58,9 @@ public class ProjetoSpringApplication implements CommandLineRunner {
 				break;
 			case "6":
 				System.exit(0);
+				break;
+			default:
+				break;
 		}
 
 		showMenu(reader);

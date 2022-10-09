@@ -1,12 +1,12 @@
-package com.ifpb.dac.projetospring.service;
+package com.ifpb.dac.projetospring.model.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ifpb.dac.projetospring.model.Vehicle;
-import com.ifpb.dac.projetospring.repository.VehicleRepository;
+import com.ifpb.dac.projetospring.model.entity.Vehicle;
+import com.ifpb.dac.projetospring.model.repository.VehicleRepository;
 
 @Service
 public class VehicleService {

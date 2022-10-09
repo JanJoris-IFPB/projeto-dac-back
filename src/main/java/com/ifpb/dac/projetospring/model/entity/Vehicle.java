@@ -1,4 +1,4 @@
-package com.ifpb.dac.projetospring.model;
+package com.ifpb.dac.projetospring.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

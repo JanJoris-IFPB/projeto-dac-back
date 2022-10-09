@@ -5,10 +5,10 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.ifpb.dac.projetospring.model.Person;
-import com.ifpb.dac.projetospring.model.Vehicle;
-import com.ifpb.dac.projetospring.service.PersonService;
-import com.ifpb.dac.projetospring.service.validation.PersonValidateService;
+import com.ifpb.dac.projetospring.model.entity.Person;
+import com.ifpb.dac.projetospring.model.entity.Vehicle;
+import com.ifpb.dac.projetospring.model.service.PersonService;
+import com.ifpb.dac.projetospring.model.service.validation.PersonValidateService;
 
 @Controller
 public class PersonController {
