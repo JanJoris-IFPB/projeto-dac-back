@@ -24,7 +24,7 @@ import com.ifpb.dac.projetospring.model.entity.Person;
 import com.ifpb.dac.projetospring.model.entity.Vehicle;
 import com.ifpb.dac.projetospring.model.service.PersonService;
 import com.ifpb.dac.projetospring.model.service.VehicleService;
-import com.ifpb.dac.projetospring.model.service.dto.PersonDTOService;
+import com.ifpb.dac.projetospring.model.service.dto.DTOService;
 import com.ifpb.dac.projetospring.model.service.validation.PersonValidateService;
 
 @RestController
@@ -34,7 +34,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
     @Autowired
-    private PersonDTOService personDtoService;
+    private DTOService<Person, PersonDTO> personDtoService;
     @Autowired
     private PersonValidateService personValidateService;
     @Autowired

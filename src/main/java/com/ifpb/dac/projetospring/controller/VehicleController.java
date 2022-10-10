@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ifpb.dac.projetospring.model.dto.VehicleDTO;
 import com.ifpb.dac.projetospring.model.entity.Vehicle;
 import com.ifpb.dac.projetospring.model.service.VehicleService;
-import com.ifpb.dac.projetospring.model.service.dto.VehicleDTOService;
+import com.ifpb.dac.projetospring.model.service.dto.DTOService;
 
 @RestController
 @RequestMapping("/api/vehicle")
@@ -30,7 +30,7 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
     @Autowired
-    private VehicleDTOService vehicleDTOService;
+    private DTOService<Vehicle, VehicleDTO> vehicleDTOService;
 
     @PostMapping()
     public ResponseEntity<VehicleDTO> saveVehicle(@RequestBody VehicleDTO vehicleDTO) {
@@ -43,14 +43,14 @@ public class VehicleController {
         vehicle.setColor(vehicleDTO.getColor());
 
         return new ResponseEntity<>(
-                vehicleDTOService.toDto(vehicleService.save(vehicle)),
+                vehicleDTOService.toDTO(vehicleService.save(vehicle)),
                 HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<VehicleDTO> getVehicle(@RequestParam String plate) throws NoSuchElementException {
         return new ResponseEntity<>(
-                vehicleDTOService.toDto(vehicleService.findById(plate).orElseThrow()),
+                vehicleDTOService.toDTO(vehicleService.findById(plate).orElseThrow()),
                 HttpStatus.FOUND);
     }
 
@@ -60,7 +60,7 @@ public class VehicleController {
             throw new Exception("Não há veículos cadastrados!");
 
         return new ResponseEntity<>(
-                vehicleDTOService.toDtoList(vehicleService.findAll()),
+                vehicleDTOService.toDTOList(vehicleService.findAll()),
                 HttpStatus.FOUND);
     }
 
@@ -79,7 +79,7 @@ public class VehicleController {
             vehicle.setColor(vehicleDTO.getColor());
 
         return new ResponseEntity<>(
-                vehicleDTOService.toDto(vehicleService.save(vehicle)),
+                vehicleDTOService.toDTO(vehicleService.save(vehicle)),
                 HttpStatus.OK);
     }
 
