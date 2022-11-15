@@ -62,8 +62,8 @@ public class PersonController {
                 HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<PersonDTO> getPerson(@RequestParam String cpf) throws NoSuchElementException {
+    @GetMapping("/find/cpf={cpf}")
+    public ResponseEntity<PersonDTO> getPerson(@PathVariable("cpf") String cpf) throws NoSuchElementException {
         return new ResponseEntity<>(
                 personDtoService.toDTO(personService.findById(cpf).orElseThrow()),
                 HttpStatus.FOUND);
@@ -101,9 +101,9 @@ public class PersonController {
                 HttpStatus.OK);
     }
 
-    @DeleteMapping
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void delete(@RequestParam String cpf) throws NoSuchElementException {
+    @DeleteMapping("/delete/cpf={cpf}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void delete(@PathVariable("cpf") String cpf) throws NoSuchElementException {
         personService.delete(personService.findById(cpf).orElseThrow());
     }
 

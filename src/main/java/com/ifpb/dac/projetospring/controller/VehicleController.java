@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,8 +46,8 @@ public class VehicleController {
                 HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<VehicleDTO> getVehicle(@RequestParam String plate) throws NoSuchElementException {
+    @GetMapping("/find/plate={plate}")
+    public ResponseEntity<VehicleDTO> getVehicle(@PathVariable("plate") String plate) throws NoSuchElementException {
         return new ResponseEntity<>(
                 vehicleDTOService.toDTO(vehicleService.findById(plate).orElseThrow()),
                 HttpStatus.FOUND);
@@ -83,9 +82,9 @@ public class VehicleController {
                 HttpStatus.OK);
     }
 
-    @DeleteMapping
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void delete(@RequestParam String plate) throws NoSuchElementException {
+    @DeleteMapping("/delete/plate={plate}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void delete(@PathVariable("plate") String plate) throws NoSuchElementException {
         vehicleService.delete(vehicleService.findById(plate).orElseThrow());
     }
 
