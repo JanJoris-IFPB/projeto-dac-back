@@ -1,4 +1,4 @@
-package com.ifpb.dac.projetospring.controller;
+package com.ifpb.dac.projetospring.presentation.controller;
 
 import java.util.NoSuchElementException;
 
@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ifpb.dac.projetospring.model.dto.VehicleDTO;
+import com.ifpb.dac.projetospring.business.service.DTOService;
+import com.ifpb.dac.projetospring.business.service.EntityService;
 import com.ifpb.dac.projetospring.model.entity.Vehicle;
-import com.ifpb.dac.projetospring.model.service.VehicleService;
-import com.ifpb.dac.projetospring.model.service.dto.DTOService;
+import com.ifpb.dac.projetospring.presentation.dto.VehicleDTO;
 
 @RestController
 @RequestMapping("/api/vehicle")
 public class VehicleController {
 
     @Autowired
-    private VehicleService vehicleService;
+    private EntityService<Vehicle, String> vehicleService;
     @Autowired
     private DTOService<Vehicle, VehicleDTO> vehicleDTOService;
 

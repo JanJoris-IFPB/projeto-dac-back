@@ -1,4 +1,4 @@
-package com.ifpb.dac.projetospring.model.dto;
+package com.ifpb.dac.projetospring.presentation.dto;
 
 import java.util.List;
 

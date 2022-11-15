@@ -1,13 +1,13 @@
-package com.ifpb.dac.projetospring.model.service.dto.impl;
+package com.ifpb.dac.projetospring.business.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ifpb.dac.projetospring.model.dto.VehicleDTO;
+import com.ifpb.dac.projetospring.business.service.DTOService;
 import com.ifpb.dac.projetospring.model.entity.Vehicle;
-import com.ifpb.dac.projetospring.model.service.dto.DTOService;
+import com.ifpb.dac.projetospring.presentation.dto.VehicleDTO;
 
 @Service
 public class VehicleDTOService implements DTOService<Vehicle, VehicleDTO> {

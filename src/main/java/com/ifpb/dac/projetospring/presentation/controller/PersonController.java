@@ -1,4 +1,4 @@
-package com.ifpb.dac.projetospring.controller;
+package com.ifpb.dac.projetospring.presentation.controller;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -19,26 +19,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ifpb.dac.projetospring.model.dto.PersonDTO;
+import com.ifpb.dac.projetospring.business.service.DTOService;
+import com.ifpb.dac.projetospring.business.service.EntityService;
+import com.ifpb.dac.projetospring.business.service.PersonValidateService;
 import com.ifpb.dac.projetospring.model.entity.Person;
 import com.ifpb.dac.projetospring.model.entity.Vehicle;
-import com.ifpb.dac.projetospring.model.service.PersonService;
-import com.ifpb.dac.projetospring.model.service.VehicleService;
-import com.ifpb.dac.projetospring.model.service.dto.DTOService;
-import com.ifpb.dac.projetospring.model.service.validation.PersonValidateService;
+import com.ifpb.dac.projetospring.presentation.dto.PersonDTO;
 
 @RestController
 @RequestMapping("/api/person")
 public class PersonController {
 
     @Autowired
-    private PersonService personService;
+    private EntityService<Person, String> personService;
     @Autowired
     private DTOService<Person, PersonDTO> personDtoService;
     @Autowired
     private PersonValidateService personValidateService;
     @Autowired
-    private VehicleService vehicleService;
+    private EntityService<Vehicle, String> vehicleService;
 
     @PostMapping
     public ResponseEntity<PersonDTO> savePerson(@RequestBody PersonDTO personDTO) throws Exception {
