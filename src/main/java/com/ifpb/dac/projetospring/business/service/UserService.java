@@ -1,0 +1,27 @@
+package com.ifpb.dac.projetospring.business.service;
+
+import java.util.List;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.ifpb.dac.projetospring.model.entity.User;
+
+public interface UserService extends UserDetailsService {
+
+	public User save(User user);
+
+	public User update(User user);
+
+	public void delete(Long id);
+
+	public User findById(Long id);
+
+	public User findByEmail(String email);
+
+	public User findByUsername(String username);
+
+	public Iterable<User> findAll();
+
+	public List<User> find(User filter);
+
+}

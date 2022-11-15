@@ -13,22 +13,22 @@ import com.ifpb.dac.projetospring.presentation.dto.VehicleDTO;
 public class VehicleDTOService implements DTOService<Vehicle, VehicleDTO> {
 
     @Override
-    public VehicleDTO toDTO(Vehicle model) {
+    public VehicleDTO toDTO(Vehicle vehicle) {
         VehicleDTO vehicleDTO = new VehicleDTO();
 
-        vehicleDTO.setPlate(model.getPlate());
-        vehicleDTO.setMake(model.getMake());
-        vehicleDTO.setModel(model.getModel());
-        vehicleDTO.setColor(model.getColor());
+        vehicleDTO.setPlate(vehicle.getPlate());
+        vehicleDTO.setMake(vehicle.getMake());
+        vehicleDTO.setModel(vehicle.getModel());
+        vehicleDTO.setColor(vehicle.getColor());
 
         return vehicleDTO;
     }
 
     @Override
-    public List<VehicleDTO> toDTOList(Iterable<Vehicle> modelList) {
+    public List<VehicleDTO> toDTOList(Iterable<Vehicle> vehicleList) {
         List<VehicleDTO> dtos = new ArrayList<>();
 
-        for (Vehicle vehicle : modelList)
+        for (Vehicle vehicle : vehicleList)
             dtos.add(toDTO(vehicle));
 
         return dtos;

@@ -65,7 +65,7 @@ public class PersonController {
     public ResponseEntity<PersonDTO> getPerson(@PathVariable("cpf") String cpf) throws NoSuchElementException {
         return new ResponseEntity<>(
                 personDtoService.toDTO(personService.findById(cpf).orElseThrow()),
-                HttpStatus.FOUND);
+                HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -75,7 +75,7 @@ public class PersonController {
 
         return new ResponseEntity<>(
                 personDtoService.toDTOList(personService.findAll()),
-                HttpStatus.FOUND);
+                HttpStatus.OK);
     }
 
     @PutMapping("/update/cpf={cpf}")

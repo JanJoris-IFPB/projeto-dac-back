@@ -50,7 +50,7 @@ public class VehicleController {
     public ResponseEntity<VehicleDTO> getVehicle(@PathVariable("plate") String plate) throws NoSuchElementException {
         return new ResponseEntity<>(
                 vehicleDTOService.toDTO(vehicleService.findById(plate).orElseThrow()),
-                HttpStatus.FOUND);
+                HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -60,7 +60,7 @@ public class VehicleController {
 
         return new ResponseEntity<>(
                 vehicleDTOService.toDTOList(vehicleService.findAll()),
-                HttpStatus.FOUND);
+                HttpStatus.OK);
     }
 
     @PutMapping("/update/plate={plate}")
